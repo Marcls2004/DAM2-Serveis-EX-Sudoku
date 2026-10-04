@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Fondo blanco limpio, alineación centrada y tipografía moderna -->
+
+<VBox alignment="CENTER_LEFT" prefHeight="280.0" prefWidth="420.0" spacing="12.0" style="-fx-background-color: #ffffff; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.Controller">
+    
+    <!-- Añadimos márgenes generosos a los lados para que no se pegue a los bordes de la ventana -->
+    <padding>
+        <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+    </padding>
+    
+    <children>
+        <!-- Título descriptivo para el Servidor con color gris oscuro elegante -->
+        <Label style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #2c3e50;" text="Servidor URL (WebSocket):" />
+        <TextField fx:id="txtServer" style="-fx-background-radius: 5; -fx-padding: 8; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-font-size: 13px;" text="ws://localhost:8887" />
+        
+        <!-- Separación y campo de Nombre de Usuario -->
+        <Label style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #2c3e50;" text="Tu Nombre de Jugador:">
+            <VBox.margin>
+                <Insets top="8.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="txtNombre" promptText="Introduce tu nombre aquí" style="-fx-background-radius: 5; -fx-padding: 8; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-font-size: 13px;" />
+        
+        <!-- Botón de acción centrado, con color azul plano moderno, bordes redondeados y puntero de mano -->
+        <Button maxWidth="Infinity" onAction="#onConectarClick" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;" text="Empezar">
+            <VBox.margin>
+                <Insets top="15.0" />
+            </VBox.margin>
+        </Button>
+    </children>
+</VBox>

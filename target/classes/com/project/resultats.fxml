@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- 🟢 SOLUCIONADO: Añadido el controlador en la etiqueta raíz -->
+
+<VBox alignment="CENTER" prefHeight="420.0" prefWidth="400.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="🏆 Resultados Finales de la Partida 🏆" />
+        <Label text="Clasificación de Jugadores:" />
+        <ListView fx:id="listaPuntuacionesResultados" VBox.vgrow="ALWAYS" />
+        <Button onAction="#onVolverAlJuegoClick" style="-fx-padding: 8 15 8 15;" text="Volver al Tablero de Juego" />
+    </children>
+</VBox>

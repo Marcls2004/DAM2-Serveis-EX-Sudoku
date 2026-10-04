@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- 🟢 ASEGÚRATE DE QUE LA PRIMERA LÍNEA TENGA EL CONTROLER ASIGNADO AQUÍ -->
+<HBox spacing="20.0" prefWidth="680.0" prefHeight="480.0" xmlns="http://javafx.com" xmlns:fx="http://javafx.com" fx:controller="com.project.Controller">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+    </padding>
+    <children>
+        <GridPane fx:id="gridSudoku" style="-fx-background-color: #333333; -fx-padding: 3;" alignment="CENTER" />
+        <VBox spacing="10.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="lblJugadorActual" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #1e3d59;" />
+                <Label text="Puntuación de Jugadores:" />
+                <ListView fx:id="listaPuntuacionesJuego" VBox.vgrow="ALWAYS" />
+                <Button text="Ver Clasificación Final" onAction="#onVerClasificacionClick" maxWidth="Infinity" style="-fx-padding: 8;" />
+            </children>
+        </VBox>
+    </children>
+</HBox>

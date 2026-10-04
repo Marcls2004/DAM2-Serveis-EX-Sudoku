@@ -24,15 +24,22 @@
       DEPENDENCIAS AGREGADAS 
       Librerías externas indispensables para que el juego compile con red y ventanas gráficas.
     -->
-    <dependencies>
-        <!-- Componente core de JavaFX necesario para crear botones, tablas y layouts -->
+        <dependencies>
+        <!-- Componente core de JavaFX (Ya lo tienes) -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
         </dependency>
         
-        <!-- API estándar para crear y gestionar conexiones de red WebSockets en tiempo real -->
+        <!-- 🟢 AÑADE ESTA DEPENDENCIA AQUÍ PARA SOLUCIONAR LOS 12 ERRORES -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        
+        <!-- API estándar para WebSockets (Ya lo tienes) -->
         <dependency>
             <groupId>org.java-websocket</groupId>
             <artifactId>Java-WebSocket</artifactId>
