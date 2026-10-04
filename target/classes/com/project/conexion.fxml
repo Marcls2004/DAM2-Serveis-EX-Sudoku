@@ -1,35 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Importacions obligatòries de JavaFX per estructurar el layout, marges i components -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<!-- Fondo blanco limpio, alineación centrada y tipografía moderna -->
-
-<VBox alignment="CENTER_LEFT" prefHeight="280.0" prefWidth="420.0" spacing="12.0" style="-fx-background-color: #ffffff; -fx-font-family: 'Segoe UI', Arial, sans-serif;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.Controller">
+<!-- 
+  🟢 CAMBI 1: CONTENIDOR ARREL ESTILITZAT (VBox)
+  - S'ha passat el fons de gris industrial a blanc pur (#ffffff).
+  - S'ha configurat la tipografia universal 'Segoe UI' per un aspecte estilitzat.
+  - S'ha establert l'alineació 'CENTER_LEFT' per organitzar els textos de forma professional.
+  - S'ha fixat una mida proporcional de 420x280 i un espaiat intern entre elements de 12px.
+-->
+<VBox alignment="CENTER_LEFT" prefHeight="280.0" prefWidth="420.0" spacing="12.0" 
+      style="-fx-background-color: #ffffff; -fx-font-family: 'Segoe UI', Arial, sans-serif;" 
+      xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.project.Controller">
     
-    <!-- Añadimos márgenes generosos a los lados para que no se pegue a los bordes de la ventana -->
+    <!-- 
+      🟢 CAMBI 2: MARGES INTERNS GENEROSOS (Padding)
+      S'han afegit coixins de 40px als costats i 30px a dalt/abaix. 
+      Això dona 'aire' al disseny i evita que els camps de text es peguin als cantons de la finestra.
+    -->
     <padding>
         <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
     </padding>
     
     <children>
-        <!-- Título descriptivo para el Servidor con color gris oscuro elegante -->
+        <!-- 
+          🟢 CAMBI 3: ETRA LA PARAULA 'NADA' DE LES ETIQUETES (Labels)
+          - Es canvia el text buit per defecte de Scene Builder per indicacions reals de joc.
+          - S'aplica un color gris fosc corporatiu (#2c3e50) i negreta per fer-ho més llegible.
+        -->
         <Label style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #2c3e50;" text="Servidor URL (WebSocket):" />
-        <TextField fx:id="txtServer" style="-fx-background-radius: 5; -fx-padding: 8; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-font-size: 13px;" text="ws://localhost:8887" />
         
-        <!-- Separación y campo de Nombre de Usuario -->
+        <!-- 
+          🟢 CAMBI 4: CAIXES DE TEXT MODERNES (TextFields)
+          - S'ha afegit un text predefinit 'ws://localhost:8887' automàtic per estalviar temps a l'usuari.
+          - S'inclou un contorn gris clar suavitzat (#dcdde1) i cantons arrodonits (radius: 5).
+          - Es posa un padding de 8px per a que el text interior no quedi estret.
+        -->
+        <TextField fx:id="txtServer" text="ws://localhost:8887"
+                   style="-fx-background-radius: 5; -fx-padding: 8; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-font-size: 13px;" />
+        
+        <!-- Segona etiqueta d'indicació amb un marge superior extra de 8px per separar els blocs -->
         <Label style="-fx-font-weight: bold; -fx-font-size: 13px; -fx-text-fill: #2c3e50;" text="Tu Nombre de Jugador:">
             <VBox.margin>
                 <Insets top="8.0" />
             </VBox.margin>
         </Label>
-        <TextField fx:id="txtNombre" promptText="Introduce tu nombre aquí" style="-fx-background-radius: 5; -fx-padding: 8; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-font-size: 13px;" />
         
-        <!-- Botón de acción centrado, con color azul plano moderno, bordes redondeados y puntero de mano -->
-        <Button maxWidth="Infinity" onAction="#onConectarClick" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;" text="Empezar">
+        <!-- Segon camp de text on l'usuari teclejarà el seu nom per connectar els fils -->
+        <TextField fx:id="txtNombre" promptText="Introduce tu nombre aquí" 
+                   style="-fx-background-radius: 5; -fx-padding: 8; -fx-border-color: #dcdde1; -fx-border-radius: 5; -fx-font-size: 13px;" />
+        
+        <!-- 
+          🟢 CAMBI 5: BOTÓ PLANU ESTILITZAT (Button)
+          - Es configura 'maxWidth="Infinity"' per a que ocupi tot l'amplre disponible del bloc.
+          - Es canvia el botó gris quadrat clàssic per un fons blau modern (#3498db) amb lletres blanques.
+          - S'inclou '-fx-cursor: hand' per a que es posi la icona de la mà en passar el ratolí per sobre.
+          - S'afegeix un marge de separació superior de 15px respecte a la caixa del nom.
+        -->
+        <Button maxWidth="Infinity" onAction="#onConectarClick" 
+                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;" 
+                text="Empezar">
             <VBox.margin>
                 <Insets top="15.0" />
             </VBox.margin>

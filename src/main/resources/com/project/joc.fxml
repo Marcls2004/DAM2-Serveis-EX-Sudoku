@@ -1,20 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Importacions de JavaFX encarregades de la maquetació horitzontal, vertical i components del tauler -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<!-- 🟢 ASEGÚRATE DE QUE LA PRIMERA LÍNEA TENGA EL CONTROLER ASIGNADO AQUÍ -->
-<HBox spacing="20.0" prefWidth="680.0" prefHeight="480.0" xmlns="http://javafx.com" xmlns:fx="http://javafx.com" fx:controller="com.project.Controller">
+<!-- 
+  🟢 CANVI 1: ENLLAÇ OBLIGATORI DEL CONTROLADOR (fx:controller)
+  - S'ha afegit 'fx:controller="com.project.Controller"' a la etiqueta arrel HBox.
+  - Això va solucionar el bloqueig crític 'No controller specified' que impedia mapejar l'esdeveniment del botó.
+  - Configura un disseny horitzontal adaptatiu de 680x480 amb un espaiat entre blocs de 20px.
+-->
+<HBox spacing="20.0" prefWidth="680.0" prefHeight="480.0" 
+      xmlns="http://javafx.com" xmlns:fx="http://javafx.com" 
+      fx:controller="com.project.Controller">
+      
+    <!-- Marges de coixí de 15px a tots els costats de la finestra del joc -->
     <padding>
         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
     </padding>
+    
     <children>
+        <!-- 
+          🟢 CANVI 2: CONTENIDOR DE MATRIU CONCURRENT (GridPane)
+          - Es declara buit amb l'identificador 'fx:id="gridSudoku"' per a que Scene Builder el reconegui.
+          - S'ha eliminat el color negre pur de fons per evitar línies brusques de reixeta.
+          - Es delega l'expansió mínima (415x415) al codi Java per obrir la línia col·lapsada de 0 píxels.
+        -->
         <GridPane fx:id="gridSudoku" style="-fx-background-color: #333333; -fx-padding: 3;" alignment="CENTER" />
+        
+        <!-- 
+          🟢 CANVI 3: PANEL LATERAL DRETA ADAPTATIU (VBox)
+          - S'ha configurat 'HBox.hgrow="ALWAYS"' per a que aquest bloc s'estengui de forma neta 
+            i ompli tot l'espai restant de la finestra de manera proporcional.
+          - Defineix un espaiat intern vertical de 10px entre etiquetes, llista i botons.
+        -->
         <VBox spacing="10.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
             <children>
+                <!-- 
+                  🟢 CANVI 4: ETIQUETA DE PUNTS EN DIRECTE (Label)
+                  - Component connectat a 'fx:id="lblJugadorActual"'.
+                  - S'ha modificat el controlador per a que injecti aquí el text 'Jugador: Marc (0 pts)' 
+                    des del primer segon, actualitzant-se de forma aïllada només quan tu encertes.
+                -->
                 <Label fx:id="lblJugadorActual" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #1e3d59;" />
+                
+                <!-- Títol capçalera del rànquing lateral en temps real -->
                 <Label text="Puntuación de Jugadores:" />
+                
+                <!-- 
+                  🟢 CANVI 5: LLISTA GRÀFICA COMPARTIDA DE XARXA (ListView)
+                  - Component connectat a 'fx:id="listaPuntuacionesJuego"'.
+                  - Es configura 'VBox.vgrow="ALWAYS"' per a que la taula s'estengui verticalment fins al final.
+                  - S'ha aïllat de la Vista 3 fent-la independent, evitant el bug on la llista desapareixia.
+                -->
                 <ListView fx:id="listaPuntuacionesJuego" VBox.vgrow="ALWAYS" />
+                
+                <!-- 
+                  🟢 CANVI 6: BOTÓ D'ACCÉS AL RÀNQUING FINAL (Button)
+                  - Es vincula l'esdeveniment de clic al mètode 'onAction="#onVerClasificacionClick"'.
+                  - S'estableix 'maxWidth="Infinity"' per a que ocupi tot l'amplre del panell lateral.
+                -->
                 <Button text="Ver Clasificación Final" onAction="#onVerClasificacionClick" maxWidth="Infinity" style="-fx-padding: 8;" />
             </children>
         </VBox>

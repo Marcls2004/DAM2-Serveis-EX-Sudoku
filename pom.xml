@@ -5,7 +5,10 @@
                              http://apache.org">
     <modelVersion>4.0.0</modelVersion>
     
-    <!-- COORDINADAS DEL PROYECTO -->
+    <!-- 
+      COORDINADAS DEL PROYECTO 
+      Define el empaquetado del juego dentro del ecosistema Maven.
+    -->
     <groupId>com.example</groupId>
     <artifactId>project-name</artifactId>
     <version>1.0.0</version>
@@ -16,30 +19,43 @@
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- Variable global para gestionar la versión de las librerías de JavaFX -->
+        
+        <!-- 
+          🔍 CAMBIO 1: SE AÑADIÓ ESTA PROPIEDAD GLOBAL 
+          Centraliza la versión de los módulos gráficos de JavaFX (Versión 20) 
+          para garantizar compatibilidad con tu JDK de compilación.
+        -->
         <javafx.version>20</javafx.version>
     </properties>
     
-    <!-- 
-      DEPENDENCIAS AGREGADAS 
-      Librerías externas indispensables para que el juego compile con red y ventanas gráficas.
-    -->
-        <dependencies>
-        <!-- Componente core de JavaFX (Ya lo tienes) -->
+    <!-- DEPENDENCIAS DEL PROYECTO -->
+    <dependencies>
+        <!-- 
+          Componente base de JavaFX (Controles nativos como Button, Label, TextField).
+        -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
         </dependency>
         
-        <!-- 🟢 AÑADE ESTA DEPENDENCIA AQUÍ PARA SOLUCIONAR LOS 12 ERRORES -->
+        <!-- 
+          🟢 CAMBIO 2: SE AÑADIÓ ESTA DEPENDENCIA CRÍTICA (MÓDULO FXML)
+          Indispensable para que tu código Java sea capaz de leer, interpretar y renderizar 
+          los archivos estructurados '.fxml' que diseñas y guardas desde Scene Builder. 
+          Su ausencia provocaba los 12 errores de compilación de paquetes ausentes en Main y Controller.
+        -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
         
-        <!-- API estándar para WebSockets (Ya lo tienes) -->
+        <!-- 
+          🟢 CAMBIO 3: SE AÑADIÓ ESTA LIBRERÍA DE RED DE TERCEROS
+          Herramienta nativa 'Java-WebSocket' que levanta los subprocesos e hilos asíncronos 
+          en segundo plano para conectar tu SudokuServer y tu WebSocketClient en tiempo real.
+        -->
         <dependency>
             <groupId>org.java-websocket</groupId>
             <artifactId>Java-WebSocket</artifactId>
@@ -76,6 +92,12 @@
                         <artifactId>exec-maven-plugin</artifactId>
                         <version>1.6.0</version>
                         <configuration>
+                            <!-- 
+                              🔍 CAMBIO 4: SE APUNTÓ EL ENTRY POINT CORRECTO
+                              Indica a Maven que al activar el perfil con '-PrunMain' en tu script 
+                              'run.ps1', debe iniciar la ejecución exclusivamente a través de la clase 
+                              'com.project.Main' que hereda de Application y despliega tus ventanas.
+                            -->
                             <mainClass>com.project.Main</mainClass>
                         </configuration>
                     </plugin>
